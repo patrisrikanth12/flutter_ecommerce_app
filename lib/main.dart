@@ -1,4 +1,8 @@
+import 'package:ecommerce_app/provider/cart_provider.dart';
+import 'package:ecommerce_app/provider/orders_provider.dart';
 import 'package:ecommerce_app/provider/products_provider.dart';
+import 'package:ecommerce_app/screens/cart_screen.dart';
+import 'package:ecommerce_app/screens/orders_screen.dart';
 import 'package:ecommerce_app/screens/product_detail_screen.dart';
 import 'package:ecommerce_app/screens/products_overview_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +15,18 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => ProductsProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => ProductsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => OrdersProvider(),
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -20,7 +34,10 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => ProductsOverviewScreen(),
-          ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
+          ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
+          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          CartScreen.routeName: (ctx) => CartScreen(),
+          OrdersScreen.routeName: (ctx) => OrdersScreen(),
         },
       ),
     );
