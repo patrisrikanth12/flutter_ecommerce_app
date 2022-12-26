@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/provider/cart_provider.dart';
 import 'package:ecommerce_app/provider/orders_provider.dart';
 import 'package:ecommerce_app/widgets/cart_list_item.dart';
+import 'package:ecommerce_app/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,7 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Cart"),
       ),
+      drawer: MainDrawer(),
       body: Column(
         children: [
           Card(

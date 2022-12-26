@@ -19,7 +19,7 @@ class OrdersProvider extends ChangeNotifier {
   final List<OrderItem> _items = [];
 
   List<OrderItem> get items {
-    return [...items];
+    return [..._items];
   }
 
   void addOrder(List<CartItem> products, double totalPrice) {

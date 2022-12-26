@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/provider/cart_provider.dart';
 import 'package:ecommerce_app/screens/cart_screen.dart';
 import 'package:ecommerce_app/widgets/badge.dart';
+import 'package:ecommerce_app/widgets/main_drawer.dart';
 
 import '../widgets/products_grid.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +30,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         actions: [
           Consumer<CartProvider>(
             builder: (ctx, cart, child) => Badge(
-              child: child!,
               value: cart.itemsCount.toString(),
+              child: child!,
             ),
             child: IconButton(
-              icon: Icon(Icons.shopping_cart),
+              icon: const Icon(Icons.shopping_cart),
               onPressed: () {
                 Navigator.of(context).pushNamed(CartScreen.routeName);
               },
@@ -50,17 +51,18 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           }, itemBuilder: (ctx) {
             return [
               const PopupMenuItem(
-                child: Text("Show All"),
                 value: ShowProducts.All,
+                child: Text("Show All"),
               ),
               const PopupMenuItem(
-                child: Text("Favourites"),
                 value: ShowProducts.Favourites,
+                child: Text("Favourites"),
               ),
             ];
           })
         ],
       ),
+      drawer: MainDrawer(),
       body: ProductsGrid(showFavourites: _showFavourites),
     );
   }
