@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/screens/cart_screen.dart';
 import 'package:ecommerce_app/screens/orders_screen.dart';
 import 'package:ecommerce_app/screens/products_overview_screen.dart';
+import 'package:ecommerce_app/screens/user_products_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -41,6 +42,14 @@ class MainDrawer extends StatelessWidget {
               onTap: (() {
                 Navigator.of(context)
                     .pushNamed(OrdersScreen.routeName);
+              }),
+            ),
+            ListTile(
+              title: const Text("Manage Products"),
+              trailing: const Icon(Icons.arrow_right),
+              onTap: (() {
+                Navigator.of(context)
+                    .pushNamed(UserProductsScreen.routeName);
               }),
             ),
           ],
